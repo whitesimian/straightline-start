@@ -51,7 +51,7 @@ let prog4 =
  (* =============================================================================== *)
  
 let rec fat n = 
-  if n == 1 then 1 else n * fat (n - 1)
+  if n == 0 then 1 else n * fat (n - 1)
   
 let prog = PrintStm [NumExp (fat 5)];;
     
