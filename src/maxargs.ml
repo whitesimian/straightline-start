@@ -5,6 +5,9 @@ let rec maxargs statement =
   | CompoundStm (s1, s2) -> max (maxargs s1) (maxargs s2)
   | AssignStm (_, e) -> maxargs_exp e
   | PrintStm e_list -> max (maxargs_exp_list e_list) (List.length e_list)
+  | ReadStm (_) -> 0
+  | CondStm (e, s1, s2) -> max (maxargs_exp e) (max (maxargs s1) (maxargs s2))
+  | WhileStm (e, s) -> max (maxargs_exp e) (maxargs s)
 
 and maxargs_exp expression =
   match expression with
